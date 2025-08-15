@@ -1,9 +1,6 @@
-import { Button, HFlow, Step, Stepper, useStepperState, VFlow } from 'bold-ui'
-import React from 'react'
+import {Step, Stepper, VFlow} from 'bold-ui'
 
-function StepperHookDemo() {
-  const { getStepProps, nextStep, previousStep } = useStepperState(1)
-
+function StepperHookDemo({ getStepProps }) {
   return (
     <VFlow>
       <Stepper>
@@ -12,15 +9,6 @@ function StepperHookDemo() {
         <Step {...getStepProps(2)}>Attack Config</Step>
         <Step {...getStepProps(3)}>Download Dataset</Step>
       </Stepper>
-
-      <HFlow justifyContent='center'>
-        <Button size='small' skin='default' onClick={previousStep}>
-          Previous
-        </Button>
-        <Button size='small' kind='primary' skin='default' onClick={nextStep}>
-          Next
-        </Button>
-      </HFlow>
     </VFlow>
   )
 }

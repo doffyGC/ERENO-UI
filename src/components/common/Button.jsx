@@ -1,9 +1,8 @@
 import { Button } from 'bold-ui'
-import React from 'react'
 
-function PrimaryButton({kind, size, children}) {
+function PrimaryButton({kind, size, children, onClick}) {
   return (
-    <Button kind={kind} size={size} skin='default'>
+    <Button kind={kind} size={size} skin='default' onClick={onClick}>
           {children}
     </Button>
   )
