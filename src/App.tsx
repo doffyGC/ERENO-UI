@@ -1,12 +1,8 @@
-import { useState } from 'react'
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import Iedconfig from "./pages/IedConfig/Iedconfig";
 import GooseFlow from './pages/GooseFlow/GooseFlow';
-import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <BrowserRouter>
       <Routes>
