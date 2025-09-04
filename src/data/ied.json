@@ -1,29 +1,25 @@
 {
   "parameters": {
-    "addLegitimateMessages": "boolean",
-    "datSet": "string",
+    "id": "number",
+    "groupId": "number",
+    "name": "string",
+    "gocbRef": "string",
+    "timestamp": "number",
     "function": [
       "PUBLISHER",
       "SUBSCRIBER"
     ],
-    "gocbRef": "string",
-    "groupId": "number",
-    "id": "number",
-    "maxTime": "number",
-    "minTime": "number",
-    "name": "string",
-    "sourceAdress": "string",
-    "sqNum": "number",
+    "datSet": "string",
     "stNum": "number",
-    "timestamp": "number"
+    "sqNum": "number",
+    "sourceAdress": "string",
+    "addLegitimateMessages": "boolean"
   },
   "defaultValues": {
     "id": 1,
     "name": "defaultIED",
     "gocbRef": "LD/LLN0$GO$gcbA",
     "datSet": "LD/LLN0$IntLockA",
-    "minTime": 100,
-    "maxTime": 1000,
     "timestamp": 0,
     "stNum": 1,
     "sqNum": 1,

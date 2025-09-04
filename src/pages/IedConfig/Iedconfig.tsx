@@ -1,7 +1,10 @@
 import { Shield as IconShield, Group as IconGroup, Server as IconServer } from 'lucide-react';
+import IedForm from './IedForm';
+import { useState } from 'react';
 
 
 export default function IedConfig() {
+  const [showForm, setShowForm] = useState(false);
   return (
     <main className="min-h-screen  bg-[#ECF0FF] flex flex-col">
       {/* Header */}
@@ -37,13 +40,17 @@ export default function IedConfig() {
           <p className="text-gray-600 mb-4">
             Configure Intelligent Electronic Devices for simulation
           </p>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded mb-4">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded mb-4"
+          onClick={() => setShowForm(true)}>
             + Add IED
           </button>
           <div className="bg-[#ECF0FF] text-[#0051A2] px-3 py-2 rounded text-sm">
             <b>Limits:</b> Maximum of 1 Publisher and 10 Subscribers | Current:
             0 Publisher, 0 Subscriber(s)
           </div>
+          
+          {showForm && <IedForm />}
+
         </div>
 
         {/* Card Group */}
