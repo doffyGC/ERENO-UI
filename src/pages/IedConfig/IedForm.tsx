@@ -1,13 +1,26 @@
 import { useState } from "react";
 import iedData from "../../data/ied.json";
 import { Switch } from '@skeletonlabs/skeleton-react';
+import { Trash2 as IconTrash, Copy as IconCopy } from "lucide-react";
 
 export default function IedForm() {
   const { parameters, defaultValues } = iedData;
   const [formValues, setFormValues] = useState(defaultValues);
+  const [switchValue, setSwitchValue] = useState(false);
+
 
   const handleChange = (field: string, value: any) => {
     setFormValues(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleDelete = (field: string) => {
+    setFormValues(prev => {
+      const updated = { ...prev };
+      if (field in updated) {
+        updated[field] = "";
+      }
+      return updated;
+    });
   };
 
   return (
@@ -18,12 +31,28 @@ export default function IedForm() {
             return (
               <label key={key} className="flex items-center gap-2">
                 <Switch
-                  checked={formValues[key]}
-                  onCheckedChange={checked => handleChange(key, checked)}
+                  checked={switchValue}
+                  onCheckedChange={(e) => setSwitchValue(e.checked)}
                 />
                 <span className="font-medium">
                   {key.charAt(0).toUpperCase() + key.slice(1)}
                 </span>
+                <button
+                  type="button"
+                  onClick={() => navigator.clipboard.writeText(key)}
+                  className="ml-2 px-2 py-1 bg-blue-500 text-white rounded"
+                  title="Copiar"
+                >
+                  <IconCopy size={24}/>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleDelete(key)}
+                  className="ml-2 px-2 py-1 bg-red-500 text-white rounded border-[#F02532]"
+                  title="Excluir"
+                >
+                  <IconTrash size={24} />
+                </button>
               </label>
             );
           }
@@ -36,9 +65,8 @@ export default function IedForm() {
                 </span>
                 <select
                   value={formValues[key]}
-                  onChange={e => handleChange(key, e.target.value)}
                   className="border rounded px-2 py-1"
-                >
+                >;
                   {type.map(option => (
                     <option key={option} value={option}>
                       {option}
